@@ -11,7 +11,7 @@ default:
 	@echo 'Welcome!'
 	@echo ''
 	@echo 'Which command would you like to run?'
-	@grep '^[^#[:space:]].*:' Makefile
+	@grep '^[^#[:space:]].*:' Makefile | sed 's/#/ /'
 
 install: #                   Install SimpleCloud
 	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
@@ -37,7 +37,7 @@ stop: #                      Stop all apps
 install-disk: #              Add disk to fstab
 	@nano /etc/fstab
 
-install-nodejs: #             Install nodejs v8.x from nodesource
+install-nodejs: #            Install nodejs v8.x from nodesource
 	apt-get install -y curl && \
 	if [[ -z "$(which gpg)" ]]; then \
 		apt-get install -y gnupg; \
