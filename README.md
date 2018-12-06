@@ -126,41 +126,73 @@ htpasswd -nBC 14 '' | tr -d ':\n' | sed 's/^$2y/$2a/'
 
 **2. Add to Radicale and WebDAV**
 
-Add to `/data/simplecloud/users.passwd` the line `<username>:<bcryptpassword>`
+Add to `/opt/simplecloud/_config_cache/users.passwd` the line `<username>:<bcryptpassword>`
+
+```
+sudo nano /opt/simplecloud/_config_cache/users.passwd
+```
+
+**2.1. Add WebDAV user dir**
+
+```
+sudo mkdir /data/simplecloud/storage/<username>
+sudo chown www-data:root -R /data/simplecloud/storage/<username>
+```
+
+And add the configs in apache2
+
+```
+sudo nano /opt/simplecloud/_config_cache/apache2/config.conf && sudo systemctl restart apache2
+```
+
+```
+...
+<Location /webdav/username>
+  DAV On
+  Require user username
+</Location>
+<Location /gallery/username>
+  DAV On
+  Require user username
+</Location>
+...
+```
 
 **3. Add to TheLounge**
 
-Create file like this:
+Create a file like this:
+
+`/opt/simplecloud/_config_cache/thelounge/users/username.json`
 
 ```
 {
-  "user": "username",
-  "password": "$2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
-  "log": false,
-  "networks": [
-    {
-      "awayMessage": "",
-      "nick": "1234test",
-      "name": "Freenode",
-      "host": "irc.freenode.net",
-      "port": 6697,
-      "tls": true,
-      "password": "",
-      "username": "username",
-      "realname": "",
-      "commands": [
-        "/msg NickServ identify password",
-        "/msg ChanServ op #chan"
-      ],
-      "ip": "::1",
-      "hostname": null,
-      "channels": [
-        {
-          "name": "#simplecloud",
-          "key": ""
-        }
-      ]
-    }
-  ]
+ "user": "username",
+ "password": $2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
+ "log": false,
+ "networks": [
+   {
+     "awayMessage": "",
+     "nick": "1234test",
+     "name": "Freenode",
+     "host": "irc.freenode.net",
+     "port": 6697,
+     "tls": true,
+     "password": "",
+     "username": "username",
+     "realname": "",
+     "commands": [
+       "/msg NickServ identify password",
+       "/msg ChanServ op #chan"
+     ],
+     "ip": "::1",
+     "hostname": null,
+     "channels": [
+       {
+         "name": "#simplecloud",
+         "key": ""
+       }
+     ]
+   }
+ ]
 }
 ```
