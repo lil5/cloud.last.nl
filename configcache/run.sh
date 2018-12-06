@@ -26,8 +26,8 @@ fi
 if [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]] && [[ -f /data/simplecloud/config.zip ]]; then
 	# restore
 	pushd /opt/simplecloud/_config_cache/
-		rm -r ./.*
-		unzip /data/simplecloud/config.zip
+		rm -r ./*
+		unzip -u /data/simplecloud/config.zip
 	popd
 fi
 
