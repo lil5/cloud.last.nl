@@ -1,0 +1,7 @@
+[Unit]
+Description=Matterbridge
+
+[Service]
+User=matterbridge
+Type=simple
+ExecStart=/opt/simplecloud/matterbridge/run.sh

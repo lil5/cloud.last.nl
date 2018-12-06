@@ -1,0 +1,7 @@
+[Unit]
+Description=Mini IRC daemon
+
+[Service]
+User=miniircd
+Type=simple
+ExecStart=/opt/simplecloud/miniircd/run.sh

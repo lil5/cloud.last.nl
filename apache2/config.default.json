@@ -1,0 +1,40 @@
+{
+	"title" : "SimpleCloud",
+	"items" : [
+		{
+			"alt" : "Files",
+			"icon" : "fas fa-folder",
+			"link" : "/webdav/"
+		},
+		{
+			"alt": "Gallery",
+			"icon": "fas fa-camera-retro",
+			"link": "/gallery/"
+		},
+		{
+			"alt" : "Peer Calls",
+			"icon" : "fas fa-phone",
+			"link" : "/peer/"
+		},
+		{
+			"alt" : "IRC",
+			"icon" : "fas fa-comments",
+			"link" : "/irc/"
+		},
+		{
+			"alt" : "Address Book & Calendar",
+			"icon" : "fas fa-address-book",
+			"link" : "/radicale/"
+		},
+		{
+			"alt" : "Instant.io",
+			"icon" : "fas fa-magnet",
+			"link" : "https://instant.io/"
+		},
+		{
+			"alt" : "SSL Certificate",
+			"icon" : "fas fa-award",
+			"link" : "/simplecloud.crt"
+		}
+	]
+}

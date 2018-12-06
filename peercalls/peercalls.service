@@ -1,0 +1,6 @@
+[Unit]
+Description=Peercalls
+
+[Service]
+User=peercalls
+ExecStart=/opt/simplecloud/peercalls/run.sh

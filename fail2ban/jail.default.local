@@ -1,0 +1,42 @@
+[DEFAULT]
+apache_error_log   = /var/log/apache2/error.log
+apache_access_log  = /var/log/apache2/access.log
+
+[apache-auth]
+enabled   = true
+bantime   = 3600
+maxretry  = 20
+findtime  = 600
+
+[apache-badbots]
+enabled   = true
+
+[apache-noscript]
+enabled   = true
+
+[apache-overflows]
+enabled   = true
+maxretry  = 4
+
+[apache-nohome]
+enabled   = true
+
+[apache-botsearch]
+enabled   = true
+
+[apache-fakegooglebot]
+enabled   = true
+
+[apache-shellshock]
+enabled   = true
+
+# Custom #
+
+[thelounge-badauth]
+enabled   = true
+port      = http,https
+filter    = thelounge-badauth
+logpath   = /var/log/thelounge.log
+maxretry  = 10
+findtime  = 600
+bantime   = 600

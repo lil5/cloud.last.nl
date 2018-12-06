@@ -1,0 +1,7 @@
+[Unit]
+Description=Radicale
+
+[Service]
+User=radicale
+Type=simple
+ExecStart=/opt/simplecloud/radicale/run.sh

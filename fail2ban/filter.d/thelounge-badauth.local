@@ -1,0 +1,6 @@
+[Definition]
+
+failregex = Authentication failed for user .* from <HOST>$
+            Authentication for non existing user attempted from <HOST>$
+
+ignoreregex =

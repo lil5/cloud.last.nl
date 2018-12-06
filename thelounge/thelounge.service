@@ -1,0 +1,7 @@
+[Unit]
+Description=TheLounge
+
+[Service]
+User=thelounge
+Type=simple
+ExecStart=/opt/simplecloud/thelounge/run.sh
