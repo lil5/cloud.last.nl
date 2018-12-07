@@ -40,7 +40,7 @@ else
 fi
 
 # configs
-if [[ -f /opt/simplecloud/_config_cache/matterbridge/config.toml ]]; then
+if ! [[ -f /opt/simplecloud/_config_cache/matterbridge/config.toml ]]; then
 	cp $DIR/config.default.toml /opt/simplecloud/_config_cache/matterbridge/config.toml
 fi
 

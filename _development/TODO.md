@@ -4,3 +4,5 @@
   - [ ] miniircd
   - [ ] matterbridge
   - [ ] webdavjs
+  - [x] simple-dash
+  - [x] smallergallery

@@ -104,6 +104,15 @@ sudo systemctl stop <service>
 sudo mv /opt/simplecloud/<service> /opt/simplecloud/_inactive/
 ```
 
+### Matterbridge
+
+<https://github.com/42wim/matterbridge/wiki/How-to-create-your-config#step-2>
+
+```
+sudo nano /opt/simplecloud/_config_cache/matterbridge/config.toml
+sudo systemctl restart matterbridge
+```
+
 ### Add user
 
 **1. Create bcrypt password:**
@@ -123,8 +132,10 @@ sudo nano /opt/simplecloud/_config_cache/users.passwd
 **2.1. Add WebDAV user dir**
 
 ```
-sudo mkdir /data/simplecloud/storage/<username>
-sudo chown www-data:root -R /data/simplecloud/storage/<username>
+USER=username
+sudo mkdir /data/simplecloud/storage/$USER /data/simplecloud/storage/$USER/gallery
+sudo ln -s /data/simplecloud/storage/$USER/gallery /data/simplecloud/smallergallery/original/$USER
+sudo chown www-data:root -R /data/simplecloud/storage/$USER
 ```
 
 And add the configs in apache2
@@ -150,9 +161,10 @@ sudo nano /opt/simplecloud/_config_cache/apache2/config.conf && sudo systemctl r
 Create a file like this:
 
 ```
+USER=username
 pushd /opt/simplecloud/_config_cache/thelounge/users/
-  nano username.json
-  chown thelounge:root username.json
+  sudo nano ${USER}.json
+  sudo chown thelounge:root ${USER}.json
 popd
 ```
 
