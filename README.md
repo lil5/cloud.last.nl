@@ -159,7 +159,7 @@ popd
 ```
 {
 "user": "username",
-"password": $2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
+"password": "$2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
 "log": false,
 "networks": [
   {
