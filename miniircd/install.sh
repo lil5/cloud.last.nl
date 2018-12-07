@@ -17,7 +17,7 @@ curl -o /usr/local/bin/miniircd https://raw.githubusercontent.com/jrosdahl/minii
 # configs
 
 if ! [[ -f /opt/simplecloud/_config_cache/miniircd/passwd.txt ]]; then
-	openssl rand -base64 45 > /opt/simplecloud/_config_cache/miniircd/passwd.txt
+	openssl rand -hex 20 > /opt/simplecloud/_config_cache/miniircd/passwd.txt
 fi
 
 # permissions

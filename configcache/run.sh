@@ -23,18 +23,17 @@ if [[ -x /etc/cron.d/simplecloud-config ]]; then
 fi
 
 # if _config_cache has no visible files
-if [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]] && [[ -f /data/simplecloud/config.zip ]]; then
+if [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]] && [[ -d /data/simplecloud/config.bak/ ]]; then
 	# restore
 	pushd /opt/simplecloud/_config_cache/
 		rm -r ./*
-		unzip -u /data/simplecloud/config.zip
+		mkdir /data/simplecloud/config.bak
+		cp -ar ./* /data/simplecloud/config.bak/
 	popd
 fi
 
 # backup
-pushd /opt/simplecloud/_config_cache/
-	zip -r /data/simplecloud/config.zip .
-popd
+cp -ar /opt/simplecloud/_config_cache/* /data/simplecloud/config.bak/
 
 if $CRON_EDITS_DONE; then
 	systemctl restart cron

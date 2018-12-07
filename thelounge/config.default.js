@@ -2,15 +2,15 @@
 
 module.exports = {
 	defaults: {
-		name: "Freenode",
-		host: "irc.freenode.net",
-		port: 6697,
+		name: "Local Open",
+		host: "127.0.0.1",
+		port: 6667,
 		password: "",
-		tls: true,
+		tls: false,
 		nick: "",
 		username: "",
 		realname: "",
-		join: "#simplecloud"
+		join: "#channel"
 	},
 	prefetchMaxImageSize: 1024,
 	prefetch: true,

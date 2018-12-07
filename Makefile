@@ -65,6 +65,7 @@ install-layout: #            Run if /data/ is ready for first install
 	/data/simplecloud/storage/shared \
 	/data/simplecloud/storage/user/gallery ||:
 	ln -s /data/simplecloud/storage/user/gallery /data/simplecloud/smallergallery/original/user
+
 status-diskio: #             Show disk usage
 	@echo 'Please wait 30 seconds.'
 	iotop -oP -d 30

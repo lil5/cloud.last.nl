@@ -150,7 +150,6 @@ sudo nano /opt/simplecloud/_config_cache/apache2/config.conf && sudo systemctl r
   Require user username
 </Location>
 <Location /gallery/username>
-  DAV On
   Require user username
 </Location>
 ...
@@ -160,37 +159,65 @@ sudo nano /opt/simplecloud/_config_cache/apache2/config.conf && sudo systemctl r
 
 Create a file like this:
 
-`/opt/simplecloud/_config_cache/thelounge/users/username.json`
+```
+pushd /opt/simplecloud/_config_cache/thelounge/users/
+  nano username.json
+  chown thelounge:root username.json
+popd
+```
 
 ```
 {
- "user": "username",
- "password": $2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
- "log": false,
- "networks": [
-   {
-     "awayMessage": "",
-     "nick": "1234test",
-     "name": "Freenode",
-     "host": "irc.freenode.net",
-     "port": 6697,
-     "tls": true,
-     "password": "",
-     "username": "username",
-     "realname": "",
-     "commands": [
-       "/msg NickServ identify password",
-       "/msg ChanServ op #chan"
-     ],
-     "ip": "::1",
-     "hostname": null,
-     "channels": [
-       {
-         "name": "#simplecloud",
-         "key": ""
-       }
-     ]
-   }
- ]
+"user": "username",
+"password": $2a$11$SxMDvBW7NvCAu9KIzamC/upxIh40ySCRCYhiiWycR7.EJfuWr1UiC",
+"log": false,
+"networks": [
+  {
+    "awayMessage": "",
+    "nick": "username",
+    "name": "Freenode",
+    "host": "irc.freenode.net",
+    "port": 6697,
+    "tls": true,
+    "password": "",
+    "username": "username",
+    "realname": "username",
+    "commands": [
+      "/msg NickServ identify password",
+      "/msg ChanServ op #chan"
+    ],
+    "ip": "::1",
+    "hostname": null,
+    "channels": [
+      {
+        "name": "#simplecloud",
+        "key": ""
+      }
+    ]
+  },
+  {
+    "awayMessage": "",
+    "nick": "username",
+    "name": "Local Open",
+    "host": "127.0.0.1",
+    "port": 6667,
+    "tls": false,
+    "password": "",
+    "username": "username",
+    "realname": "username",
+    "commands": [
+      "/msg NickServ identify password",
+      "/msg ChanServ op #chan"
+    ],
+    "ip": "::1",
+    "hostname": null,
+    "channels": [
+      {
+        "name": "#group",
+        "key": ""
+      }
+    ]
+  }
+]
 }
 ```
