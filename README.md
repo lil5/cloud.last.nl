@@ -9,7 +9,7 @@ _\ \ | | | | | | |_) | |  __/ /___| | (_) | |_| | (_| |
                |_|
 ```
 
-# ![icon](_development/favicon.ico) SimpleCloud
+# ![icon](_development/documentation/favicon.ico) SimpleCloud
 
 - **Home page** ([simple-dash](https://github.com/Swagielka/simple-dash/pull/6))
 - **Album** ([smallergallery](https://github.com/lil5/smallergallery) & [gallery-directory-listing](https://github.com/lil5/gallery-directory-listing))
@@ -37,9 +37,7 @@ What is SimpleCloud trying to accomplish?
 **1. Download SimpleCloud to required directory**
 
 ```
-git clone --depth 1 --branch master https://github.com/lil5/SimpleCloud /tmp/simplecloud-repo
-cp /tmp/simplecloud-repo/simplecloud /opt/simplecloud
-rm -rf /tmp/simplecloud-repo
+sudo git clone --depth 1 --branch master https://github.com/lil5/simplecloud /opt/simplecloud
 ```
 
 **2. Connect Harddrive to `/data`**
