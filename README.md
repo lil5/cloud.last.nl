@@ -56,16 +56,6 @@ cd /opt/simplecloud
 sudo make install-layout
 ```
 
-**2.2 Create SSL certificates (only required on first install)**
-
-```
-sudo apt-get update -y
-sudo /opt/simplecloud/openssl/install-ssl.sh
-```
-
-> Certificate and Key will be placed here:
-> `/data/simplecloud/`
-
 **3. Install SimpleCloud**
 
 ```

@@ -5,6 +5,11 @@
 
 CRON_EDITS_DONE=false
 
+if ! [[ -d /data/simplecloud/config.bak ]]; then
+	echo 'Directory not found: /data/simplecloud/config.bak'
+	exit 1
+fi
+
 # if cron does not exist
 if ! [[ -f /etc/cron.d/simplecloud-config ]]; then
 	CRON_EDITS_DONE=true
@@ -23,12 +28,11 @@ if [[ -x /etc/cron.d/simplecloud-config ]]; then
 fi
 
 # if _config_cache has no visible files
-if [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]] && [[ -d /data/simplecloud/config.bak/ ]]; then
+if ! [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]]; then
 	# restore
 	pushd /opt/simplecloud/_config_cache/
 		rm -r ./*
-		mkdir /data/simplecloud/config.bak
-		cp -ar ./* /data/simplecloud/config.bak/
+		cp -ar /data/simplecloud/config.bak/ ./*
 	popd
 fi
 

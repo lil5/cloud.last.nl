@@ -19,6 +19,7 @@ install: #                   Install SimpleCloud
 	apt-get install -y nano btrfs-tools btrbk tmux htop iotop && \
 	chmod +x $$DIR/*/*.sh && \
 	$$DIR/configcache/run.sh && \
+	$$DIR/openssl/install-ssl.sh && \
 	ls $$DIR/*/install.sh | bash;
 
 update: #                    Update system and SimpleCloud
@@ -60,6 +61,7 @@ install-layout: #            Run if /data/ is ready for first install
 	/data/simplecloud/smallergallery \
 	/data/simplecloud/smallergallery/gallery \
 	/data/simplecloud/smallergallery/original \
+	/data/simplecloud/config.bak \
 	/data/simplecloud/storage \
 	/data/simplecloud/storage/user \
 	/data/simplecloud/storage/shared \
