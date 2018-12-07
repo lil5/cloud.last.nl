@@ -18,3 +18,5 @@ if ! [[ -f /opt/simplecloud/_config_cache/fail2ban/jail.local ]]; then
 	cp $DIR/jail.default.local /opt/simplecloud/_config_cache/fail2ban/jail.local
 	ln -sf /opt/simplecloud/_config_cache/fail2ban/jail.local /etc/fail2ban/
 fi
+
+cp $DIR/filter.d/* /etc/fail2ban/filter.d/
