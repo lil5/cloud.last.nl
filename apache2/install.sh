@@ -30,7 +30,8 @@ a2enmod \
 	dav_fs \
 	ssl
 
-systemd disable apache2
+systemctl disable apache2
+systemctl stop apache2
 
 # configs
 if ! [[ -f /opt/simplecloud/_config_cache/apache2/config.conf ]]; then

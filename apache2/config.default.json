@@ -27,11 +27,6 @@
 			"link" : "/radicale/"
 		},
 		{
-			"alt" : "Instant.io",
-			"icon" : "fas fa-magnet",
-			"link" : "https://instant.io/"
-		},
-		{
 			"alt" : "SSL Certificate",
 			"icon" : "fas fa-award",
 			"link" : "/simplecloud.crt"

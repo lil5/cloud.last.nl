@@ -2,21 +2,24 @@
 
 # users
 [irc]
+
 	[irc.freenode]
 	Server="irc.freenode.net:6697"
-	Nick="matter"
+	Nick="username"
 	RemoteNickFormat=""
 
 	[irc.localhost]
 	RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
-	Server="localhost:6667"
-	Nick="bot"
+	Server="localhost:6660"
+	Nick="matterbot"
+	# password found here: /opt/simplecloud/_config_cache/miniircd/passwd.txt
 	NickServPassword="<password>"
 
 # channels
 [[gateway]]
 name="offtopic"
 enable=true
+
 	[[gateway.inout]]
 	account="irc.freenode"
 	channel="#simplecloud-spam"

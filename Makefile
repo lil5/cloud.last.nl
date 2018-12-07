@@ -20,7 +20,7 @@ install: #                   Install SimpleCloud
 	chmod +x $$DIR/*/*.sh && \
 	$$DIR/configcache/run.sh && \
 	$$DIR/openssl/install-ssl.sh && \
-	ls $$DIR/*/install.sh | bash;
+	ls $$DIR/*/install.sh | bash
 
 update: #                    Update system and SimpleCloud
 	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \

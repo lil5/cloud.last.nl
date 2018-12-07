@@ -32,3 +32,5 @@ fi
 # permissions
 
 chmod +x /etc/cron.d/smallergallery $DIR/bin/smallergallery
+
+$DIR/run.sh
