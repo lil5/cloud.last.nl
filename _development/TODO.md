@@ -6,3 +6,8 @@
   - [ ] webdavjs
   - [x] simple-dash
   - [x] smallergallery
+
+- [ ] **#2 Ability to use other linux distros**
+  - [x] Debian
+  - [ ] OpenSUSE
+  - [ ] Fedora
