@@ -42,6 +42,10 @@ sudo git clone --depth 1 --branch master https://github.com/lil5/simplecloud /op
 
 **2. Connect Harddrive to `/data`**
 
+> If you are using btrfs with btrbk this will install both
+>
+> `sudo make install-disk-tools`
+
 ```
 cd /opt/simplecloud
 sudo make install-disk

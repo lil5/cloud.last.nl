@@ -16,7 +16,7 @@ default:
 install: #                   Install SimpleCloud
 	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
 	apt-get update -y && apt-get upgrade -y && \
-	apt-get install -y nano btrfs-tools btrbk tmux htop iotop && \
+	apt-get install -y nano tmux htop iotop && \
 	chmod +x $$DIR/*/*.sh && \
 	$$DIR/configcache/run.sh && \
 	$$DIR/openssl/install-ssl.sh && \
@@ -37,6 +37,11 @@ stop: #                      Stop all apps
 
 install-disk: #              Add disk to fstab
 	@nano /etc/fstab
+
+install-disk-tools: #        Add BTRFS tools for backups and snapshots
+	apt-get update -y
+	apt-get upgrade -y
+	apt-get install -y nano btrfs-tools btrbk
 
 install-nodejs: #            Install nodejs v8.x from nodesource
 	apt-get install -y curl && \
