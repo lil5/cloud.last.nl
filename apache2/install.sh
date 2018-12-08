@@ -50,5 +50,5 @@ rm /etc/apache2/sites-enabled/*.conf
 ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/apache2/sites-enabled/
 
 # permissions
-chown www-data:www-data -R /data/simplecloud/storage
-chown www-data:www-data -R /var/www/dash
+chown www-data:root -R /data/simplecloud/storage
+chown www-data:root -R /var/www/dash

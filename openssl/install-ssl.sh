@@ -58,7 +58,7 @@ cp /opt/simplecloud/_config_cache/openssl/root-ca.crt /var/www/dash/simplecloud.
 
 # permissions
 
-chown www-data:www-data -R /var/www/dash
+chown www-data:root -R /var/www/dash
 
 chown root:root -R /opt/simplecloud/_config_cache/openssl
 chmod 700 -R /opt/simplecloud/_config_cache/openssl

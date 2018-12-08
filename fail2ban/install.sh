@@ -20,3 +20,5 @@ if ! [[ -f /opt/simplecloud/_config_cache/fail2ban/jail.local ]]; then
 fi
 
 cp $DIR/filter.d/* /etc/fail2ban/filter.d/
+
+systemctl restart fail2ban

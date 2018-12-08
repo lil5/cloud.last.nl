@@ -11,5 +11,5 @@ rm -r ./webdav-js/test
 popd
 
 # permissions
-chown www-data:www-data -R /var/www/webdav-js/
+chown www-data:root -R /var/www/webdav-js/
 chmod 550 -R /var/www/webdav-js
