@@ -121,8 +121,10 @@ sudo systemctl restart matterbridge
 
 **1. Create bcrypt password:**
 
+> Latency will change depending on the amount of rounds
+
 ```
-htpasswd -nBC 14 '' | tr -d ':\n' | sed 's/^$2y/$2a/'
+htpasswd -nBC 8 '' | tr -d ':' | sed 's/^$2y/$2a/'
 ```
 
 **2. Add to Radicale and WebDAV**
