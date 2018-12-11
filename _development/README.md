@@ -2,6 +2,7 @@
 
 - <TODO.md>
 - <documentation/data.tree.md>
+- Versioning [UML Sequence](documentation/versioning.atxt)
 
 ## Testing
 
