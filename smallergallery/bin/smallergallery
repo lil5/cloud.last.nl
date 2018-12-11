@@ -65,9 +65,9 @@ pushd $IN_PATH
     while IFS= read -rd '' f; do
 
       DIR_PATH=$(dirname "${OUT_PATH}/${f}")
-      mkdir "$DIR_PATH" &> /dev/null
-      if ! [[ -f "${OUT_PATH}/${f%.${i}}.${i}" ]]; then
-        convert ./"$f" -resize ${WIDTH}x\> "${OUT_PATH}/${f%.${i}}.${i}"
+      mkdir -p "$DIR_PATH" &> /dev/null
+      if ! [[ -f "${OUT_PATH}/${f}" ]]; then
+        convert "./$f" -resize ${WIDTH}x\> "${OUT_PATH}/${f}"
       fi
 
     done < <(find -L . -type f -iname "*.${i}" -print0)
