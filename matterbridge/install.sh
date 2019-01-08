@@ -45,7 +45,7 @@ if ! [[ -f /opt/simplecloud/_config_cache/matterbridge/config.toml ]]; then
 fi
 
 # permissions
-useradd --system --home-dir / --shell /sbin/nologin matterbridge
+useradd --system --home-dir / --shell /sbin/nologin -u 1101 matterbridge
 
 chmod +x /usr/local/bin/matterbridge
 

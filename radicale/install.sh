@@ -26,7 +26,7 @@ fi
 touch /var/log/radicale.log
 
 # permissions
-useradd --system --home-dir / --shell /sbin/nologin radicale
+useradd --system --home-dir / --shell /sbin/nologin -u 1104 radicale
 usermod -a -G www-data radicale
 
 chown radicale:root /var/log/radicale.log

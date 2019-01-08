@@ -21,7 +21,7 @@ if ! [[ -f /opt/simplecloud/_config_cache/miniircd/passwd.txt ]]; then
 fi
 
 # permissions
-useradd --system --home-dir / --shell /sbin/nologin miniircd
+useradd --system --home-dir / --shell /sbin/nologin -u 1102 miniircd
 
 chmod +x /usr/local/bin/miniircd
 

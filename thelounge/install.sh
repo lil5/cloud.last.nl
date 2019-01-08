@@ -22,7 +22,7 @@ fi
 touch /var/log/thelounge.log
 
 # permissions
-useradd --system --home-dir / --shell /sbin/nologin thelounge
+useradd --system --home-dir / --shell /sbin/nologin -u 1105 thelounge
 
 chown thelounge:root -R /opt/simplecloud/_config_cache/thelounge
 chmod 770 -R /opt/simplecloud/_config_cache/thelounge

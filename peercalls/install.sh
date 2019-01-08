@@ -19,7 +19,7 @@ if ! [[ -f /opt/simplecloud/_config_cache/peercalls/default.json ]]; then
 fi
 
 # permissions
-useradd --system --home-dir / --shell /sbin/nologin peercalls
+useradd --system --home-dir / --shell /sbin/nologin -u 1103 peercalls
 
 # service
 ln -fs $DIR/peercalls.service /lib/systemd/system/
