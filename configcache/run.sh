@@ -3,10 +3,16 @@
 # This is a backup script to zip configs to the "/data/" Harddrives.
 # This is so that the Harddrives don't need to be spun up for every app.
 
+# This
+if [ "$EUID" -ne 0 ]; then
+	echo "Please run as root"
+	exit 1
+fi
+
 CRON_EDITS_DONE=false
 
-if ! [[ -d /data/simplecloud/config.bak ]]; then
-	echo 'Directory not found: /data/simplecloud/config.bak'
+if ! [[ -f /data/simplecloud/config-backup.tar.gz ]]; then
+	echo 'File not found: /data/simplecloud/config-backup.tar.gz'
 	exit 1
 fi
 
@@ -27,17 +33,21 @@ if [[ -x /etc/cron.d/simplecloud-config ]]; then
 	chmod +x /etc/cron.d/simplecloud-config
 fi
 
-# if _config_cache has no visible files
-if ! [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]]; then
-	# restore
-	pushd /opt/simplecloud/_config_cache/
+pushd /opt/simplecloud/_config_cache/
+	# if _config_cache has no visible files
+	if ! [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]]; then
+		# restore
 		rm -r ./*
-		cp -ar /data/simplecloud/config.bak/ ./*
-	popd
-fi
+		# extract from tar
+		tar -pxzf /data/simplecloud/config-backup.tar.gz
+		# cp -ar /data/simplecloud/config.bak/ ./*
+	fi
 
-# backup
-cp -ar /opt/simplecloud/_config_cache/* /data/simplecloud/config.bak/
+	# backup
+	# place into tar
+	tar -pczf /data/simplecloud/config-backup.tar.gz *
+	# cp -ar /opt/simplecloud/_config_cache/* /data/simplecloud/config.bak/
+popd
 
 if $CRON_EDITS_DONE; then
 	systemctl restart cron
