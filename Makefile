@@ -15,8 +15,9 @@ default:
 
 install: #                   Install SimpleCloud
 	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
-	apt-get update -y && apt-get upgrade -y && \
-	apt-get install -y nano tmux htop iotop && \
+	$$DIR/distro/setup.sh; \
+	$$DIR/distro/pm-update.sh && $$DIR/distro/pm-upgrade.sh && \
+	$$DIR/distro/pm-install.sh nano tmux htop iotop && \
 	chmod +x $$DIR/*/*.sh && \
 	$$DIR/configcache/run.sh && \
 	$$DIR/openssl/install-ssl.sh && \
@@ -25,7 +26,7 @@ install: #                   Install SimpleCloud
 update: #                    Update system and SimpleCloud
 	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
 	echo 'update & upgrade' && \
-	apt-get update -y && apt-get upgrade -y && \
+	$$DIR/distro/pm-update.sh && $$DIR/distro/pm-upgrade.sh && \
 	echo 'update all...' && \
 	ls $$DIR/*/update.sh | bash;
 
@@ -39,18 +40,27 @@ install-disk: #              Add disk to fstab
 	@nano /etc/fstab
 
 install-disk-tools: #        Add BTRFS tools for backups and snapshots
-	apt-get update -y
-	apt-get upgrade -y
-	apt-get install -y nano btrfs-tools btrbk
+	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
+	$$DIR/distro/pm-update.sh && $$DIR/distro/pm-upgrade.sh && \
+	$$DIR/distro/pm-install.sh nano btrfs-tools btrbk
 
 install-nodejs: #            Install nodejs v8.x from nodesource
-	apt-get install -y curl && \
-	if [[ -z "$(which gpg)" ]]; then \
-		apt-get install -y gnupg; \
-	fi && \
-	curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
-	apt-get update -y && \
-	apt-get install -y nodejs build-essential
+	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
+	$$DIR/distro/setup.sh; \
+	case `cat $DIR/distro/.distro` in \
+		'debian') \
+			apt-get install -y curl; \
+			if [[ -z "$(which gpg)" ]]; then \
+				$$DIR/distro/pm-install.sh gnupg; \
+			fi && \
+			curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+			apt-get update -y && \
+			apt-get install -y nodejs build-essential; \
+		;; \
+		'suse') \
+			zypper install -y nodejs8; \
+		;; \
+	esac
 
 install-layout: #            Run if /data/ is ready for first install
 	@if ! [[ -d /data ]]; then echo '"/data/" does not exist'; exit 1; fi

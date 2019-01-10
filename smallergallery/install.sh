@@ -15,7 +15,7 @@ if ! [[ -d /data/simplecloud/smallergallery/gallery ]]; then
 fi
 
 # install
-apt-get install -y imagemagick realpath rsync curl unzip
+$DIR/../distro/pm-install.sh imagemagick rsync curl unzip
 
 cp $DIR/cron.sh /etc/cron.d/smallergallery
 

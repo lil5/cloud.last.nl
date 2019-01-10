@@ -10,7 +10,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/miniircd ]]; then
 fi
 
 # install
-apt-get install -y curl python3 openssl
+$DIR/../distro/pm-install.sh curl python3 openssl
 
 curl -o /usr/local/bin/miniircd https://raw.githubusercontent.com/jrosdahl/miniircd/master/miniircd
 

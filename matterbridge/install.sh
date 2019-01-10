@@ -10,7 +10,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/matterbridge ]]; then
 fi
 
 # install
-apt-get install -y curl grep
+$DIR/../distro/pm-install.sh curl grep
 
 ARCH=''
 case $(uname -m) in

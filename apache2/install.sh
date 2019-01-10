@@ -14,7 +14,7 @@ if ! [[ -d /data/simplecloud/storage ]]; then
 fi
 
 # install
-apt-get install -y apache2 unzip
+$DIR/../distro/pm-install.sh apache2 unzip
 
 a2enmod \
 	proxy \

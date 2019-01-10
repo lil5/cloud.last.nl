@@ -3,7 +3,7 @@
 echo '# webdav-js ##########'
 
 # install
-apt-get install -y git
+$DIR/../distro/pm-install.sh git
 
 pushd /var/www/
 git clone --depth 3 https://github.com/dom111/webdav-js

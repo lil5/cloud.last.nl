@@ -3,7 +3,6 @@
 # This is a backup script to zip configs to the "/data/" Harddrives.
 # This is so that the Harddrives don't need to be spun up for every app.
 
-# This
 if [ "$EUID" -ne 0 ]; then
 	echo "Please run as root"
 	exit 1
@@ -21,7 +20,7 @@ if ! [[ -f /etc/cron.d/simplecloud-config ]]; then
 	CRON_EDITS_DONE=true
 
 	# install dependencies
-	apt-get install -y zip unzip
+	$DIR/../distro/pm-install.sh zip unzip
 
 	# add cron script
 	echo "SHELL=/bin/bash\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\nMAILTO=''\n\n00 06 * * * root /opt/simplecloud/configcache/run.sh" > /etc/cron.d/simplecloud-config

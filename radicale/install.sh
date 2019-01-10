@@ -10,7 +10,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/radicale ]]; then
 fi
 
 # install
-apt-get install -y python3 python3-pip
+$DIR/../distro/pm-install.sh python3 python3-pip
 python3 -m pip install --upgrade radicale bcrypt passlib
 
 # configs

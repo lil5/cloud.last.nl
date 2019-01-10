@@ -1,4 +1,4 @@
-[![Debian](https://www.debian.org/logos/button-mini.png)](https://www.debian.org/distrib/) [![irc](https://img.shields.io/badge/freenode-%23simplecloud-415364.svg?colorA=ff9e18&style=flat-square)](irc://chat.freenode.net:6697/#simplecloud)
+[![Debian](https://www.debian.org/logos/button-mini.png)](https://www.debian.org/distrib/) [![OpenSuse](https://en.opensuse.org/images/8/8c/Opensuse-black.png)](https://software.opensuse.org/distributions) [![irc](https://img.shields.io/badge/freenode-%23simplecloud-415364.svg?colorA=ff9e18&style=flat-square)](irc://chat.freenode.net:6697/#simplecloud)
 
 ```
  __ _                 _        ___ _                 _
@@ -28,7 +28,7 @@ What is SimpleCloud trying to accomplish?
 
 ## Requirements
 
-- Debian (ARM, x64, i386)
+- Debian or OpenSuse (ARM, x64, i386)
 - Harddrive mounted at `/data`
 - One open port (`443`)
 

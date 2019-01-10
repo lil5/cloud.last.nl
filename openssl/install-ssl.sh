@@ -21,7 +21,7 @@ HOSTNAME="$(hostname)"
 
 # install
 
-apt-get install -y openssl
+$DIR/../distro/pm-install.sh openssl
 
 chmod +x $DIR/bin/*-gen
 

@@ -9,9 +9,6 @@ if ! [[ -d /opt/simplecloud/_config_cache/thelounge ]]; then
 	exit 1
 fi
 
-# install
-apt-get install -y build-essential nodejs
-
 npm i -g thelounge@next
 
 # configs

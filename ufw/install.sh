@@ -1,6 +1,6 @@
 echo '# ufw ##############'
 
-apt install -y ufw
+$DIR/../distro/pm-install.sh ufw
 ufw allow https
 ufw allow ssh
 ufw --force enable

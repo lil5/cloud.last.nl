@@ -10,7 +10,6 @@ if ! [[ -d /opt/simplecloud/_config_cache/peercalls ]]; then
 fi
 
 # install
-apt-get install -y build-essential nodejs
 npm i -g peer-calls
 
 # configs

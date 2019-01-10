@@ -10,7 +10,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/fail2ban ]]; then
 fi
 
 # install
-apt-get install -y fail2ban
+$DIR/../distro/pm-install.sh fail2ban
 systemctl enable fail2ban
 
 # configs
