@@ -14,7 +14,7 @@ if [[ `uname` == "Linux" ]]; then
 		DistroBasedOn='RedHat'
 	elif [[ -f /etc/slackware-version ]]; then
 		DistroBasedOn='Slackware'
-	elif [[ -f /etc/SuSE-release ]]; then
+	elif [[ -f /etc/SuSE-release ]] || [[ -f /etc/SUSE-brand ]]; then
 		DistroBasedOn='SuSe'
 	elif [[ -f /etc/mandrake-release ]]; then
 		DistroBasedOn='Mandrake'
