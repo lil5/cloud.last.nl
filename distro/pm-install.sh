@@ -9,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 case `cat $DIR/.distro` in
 	'suse' )
-		if [[ $@ =~ 'btrbk' ]]; then
+		if [[ $@ == *"btrbk"* ]]; then
 			zypper install -y curl perl asciidoc mbuffer > /dev/null
 			curl -o /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
 			chmod +x /usr/local/bin/btrbk
@@ -19,7 +19,7 @@ case `cat $DIR/.distro` in
 	;;
 	'debian' )
 		# has nodejs in list to install and "npm -v" gives error
-		if [[ $@ ~= 'nodejs' ]] && [[ -z `npm -v 2>/dev/null` ]]; then
+		if [[ $@ == *"nodejs"* ]] && [[ -z `npm -v 2>/dev/null` ]]; then
 			apt install -y curl build-essential
 			if [[ -z "$(which gpg)" ]]; then
 				apt install -y gnupg
