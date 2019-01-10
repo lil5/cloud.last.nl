@@ -15,7 +15,7 @@ case `cat $DIR/.distro` in
 			chmod +x /usr/local/bin/btrbk
 		fi
 
-		zypper install -y `echo $@ | sed -e "s/imagemagick/ImageMagick; s/btrfs-tools/btrfsprogs; s/btrbk//g; s/nodejs/nodejs8/g"` > /dev/null
+		zypper install -y `echo " $@" | sed -e "s/ imagemagick/ ImageMagick/g; s/ btrfs-tools/ btrfsprogs/g; s/ btrbk//g; s/ nodejs/ nodejs8/g"` > /dev/null
 	;;
 	'debian' )
 		# has nodejs in list to install and "npm -v" gives error
