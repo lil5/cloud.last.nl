@@ -16,6 +16,6 @@ case `cat $DIR/.distro` in
 		fi
 	;;
 	'debian' )
-		apt upgrade -y
+		apt update -y && apt upgrade -y
 	;;
 esac

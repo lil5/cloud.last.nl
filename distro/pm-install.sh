@@ -14,9 +14,20 @@ case `cat $DIR/.distro` in
 			curl -o /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
 			chmod +x /usr/local/bin/btrbk
 		fi
-		zypper install -y $($@ | sed "s/imagemagick/ImageMagick" | sed "s/btrfs-tools/btrfsprogs") | sed "s/btrbk//g") > /dev/null
+		
+		zypper install -y $($@ | sed "s/imagemagick/ImageMagick" | sed "s/btrfs-tools/btrfsprogs") | sed "s/btrbk//g" | sed "s/nodejs/nodejs8/g") > /dev/null
 	;;
 	'debian' )
+		# has nodejs in list to install and "npm -v" gives error
+		if [[ $@ ~= 'nodejs' ]] && [[ -z `npm -v 2>/dev/null` ]]; then
+			apt install -y curl build-essential
+			if [[ -z "$(which gpg)" ]]; then
+				apt install -y gnupg
+			fi
+			curl -sL https://deb.nodesource.com/setup_8.x | bash -
+			apt-get update -y
+		fi
+
 		apt install -y $@
 	;;
 esac

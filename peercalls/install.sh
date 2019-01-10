@@ -10,6 +10,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/peercalls ]]; then
 fi
 
 # install
+$DIR/../distro/pm-install.sh nodejs
 npm i -g peer-calls
 
 # configs

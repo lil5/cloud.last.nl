@@ -9,6 +9,7 @@ if ! [[ -d /opt/simplecloud/_config_cache/thelounge ]]; then
 	exit 1
 fi
 
+$DIR/../distro/pm-install.sh nodejs
 npm i -g thelounge@next
 
 # configs
