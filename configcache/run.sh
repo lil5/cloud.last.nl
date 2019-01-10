@@ -3,6 +3,8 @@
 # This is a backup script to zip configs to the "/data/" Harddrives.
 # This is so that the Harddrives don't need to be spun up for every app.
 
+echo '# configcache ######'
+
 if [ "$EUID" -ne 0 ]; then
 	echo "Please run as root"
 	exit 1
@@ -10,8 +12,8 @@ fi
 
 CRON_EDITS_DONE=false
 
-if ! [[ -f /data/simplecloud/config-backup.tar.gz ]]; then
-	echo 'File not found: /data/simplecloud/config-backup.tar.gz'
+if ! [[ -d /data/simplecloud ]]; then
+	echo 'Directory not found: /data/simplecloud'
 	exit 1
 fi
 
@@ -27,25 +29,24 @@ if ! [[ -f /etc/cron.d/simplecloud-config ]]; then
 fi
 
 # if cron file not executable
-if [[ -x /etc/cron.d/simplecloud-config ]]; then
+if ! [[ -x /etc/cron.d/simplecloud-config ]]; then
 	CRON_EDITS_DONE=true
 	chmod +x /etc/cron.d/simplecloud-config
 fi
 
 pushd /opt/simplecloud/_config_cache/
-	# if _config_cache has no visible files
-	if ! [[ $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]]; then
+	# if _config_cache has no visible files and has a backup
+	if [[ ! $(ls /opt/simplecloud/_config_cache/ | wc -l) -gt 0 ]] && [[ -f /data/simplecloud/config-backup.tar.gz ]]; then
 		# restore
+		# remove old
 		rm -r ./*
 		# extract from tar
 		tar -pxzf /data/simplecloud/config-backup.tar.gz
-		# cp -ar /data/simplecloud/config.bak/ ./*
+	else
+		# backup
+		# place into new tar
+		tar -pczf /data/simplecloud/config-backup.tar.gz *
 	fi
-
-	# backup
-	# place into tar
-	tar -pczf /data/simplecloud/config-backup.tar.gz *
-	# cp -ar /opt/simplecloud/_config_cache/* /data/simplecloud/config.bak/
 popd
 
 if $CRON_EDITS_DONE; then
