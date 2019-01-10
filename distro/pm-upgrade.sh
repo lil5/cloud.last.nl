@@ -9,7 +9,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 case `cat $DIR/.distro` in
 	'suse' )
-		zypper upgrade -y
+		zypper update -y > /dev/null
 		if [[ -f /usr/local/bin/btrbk ]]; then
 			curl -o /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
 			chmod +x /usr/local/bin/btrbk

@@ -58,7 +58,7 @@ install-nodejs: #            Install nodejs v8.x from nodesource
 			apt-get install -y nodejs build-essential; \
 		;; \
 		'suse') \
-			zypper install -y nodejs8; \
+			zypper install -y nodejs8 > /dev/null; \
 		;; \
 	esac
 

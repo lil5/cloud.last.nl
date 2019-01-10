@@ -9,7 +9,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 case `cat $DIR/.distro` in
 	'suse' )
-		zypper update -y
 	;;
 	'debian' )
 		apt update -y
