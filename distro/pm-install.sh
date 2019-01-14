@@ -11,12 +11,15 @@ if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 case `cat $DIR/.distro` in
 	'suse' )
 		if [[ $@ == *"btrbk"* ]]; then
+			echo 'zypper installing: curl perl asciidoc mbuffer'
 			zypper install -y curl perl asciidoc mbuffer > /dev/null
 			curl -Lo /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
 			chmod +x /usr/local/bin/btrbk
 		fi
 
-		zypper install -y `echo " $@" | sed -e "s/ imagemagick/ ImageMagick/g; s/ btrfs-tools/ btrfsprogs/g; s/ btrbk//g; s/ nodejs/ nodejs8/g"` > /dev/null
+		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ imagemagick/ ImageMagick/g; s/ btrfs-tools/ btrfsprogs/g; s/ btrbk//g; s/ nodejs/ nodejs8/g"`
+		echo "zypper installing: $LIST_INSTALL_PKG"
+		zypper install -y $LIST_INSTALL_PKG > /dev/null
 	;;
 	'debian' )
 		# has nodejs in list to install and "npm -v" gives error

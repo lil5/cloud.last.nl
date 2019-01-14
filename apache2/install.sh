@@ -69,9 +69,11 @@ esac
 case $DISTRO in
 	'suse' )
 		usermod -u 1100 wwwrun
+		groupmod -g 1300 www
 	;;
 	'debian' )
 		usermod -u 1100 www-data
+		groupmod -g 1300 www-data
 	;;
 esac
 

@@ -30,12 +30,12 @@ touch /var/log/radicale.log
 
 # permissions
 useradd --system --home-dir / --shell /sbin/nologin -u 1104 radicale
-usermod -a -G 1100 radicale
+usermod -a -G 1300 radicale
 
 chown radicale:root /var/log/radicale.log
 chmod 775 /var/log/radicale.log
 
-chown radicale:1100 /opt/simplecloud/_config_cache/users.passwd
+chown radicale:1300 /opt/simplecloud/_config_cache/users.passwd
 chmod 770 /opt/simplecloud/_config_cache/users.passwd
 
 chown radicale:root -R /opt/simplecloud/_config_cache/radicale
