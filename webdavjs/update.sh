@@ -6,5 +6,5 @@ git reset --hard origin/master
 rm -r ./test
 popd
 
-chown www-data:root -R /var/www/webdav-js/
+chown 1100:root -R /var/www/webdav-js/
 chmod 550 -R /var/www/webdav-js

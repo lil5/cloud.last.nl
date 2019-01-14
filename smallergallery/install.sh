@@ -2,7 +2,8 @@
 
 echo '# Smaller Gallery ##'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 if ! [[ -d /data/simplecloud/smallergallery/original ]]; then
 	echo 'Directory not found: /data/simplecloud/smallergallery/original'

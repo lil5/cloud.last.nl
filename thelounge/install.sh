@@ -2,7 +2,10 @@
 
 echo '# TheLounge ########'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
+
+DISTRO=`cat $DIR/../distro/.distro`
 
 if ! [[ -d /opt/simplecloud/_config_cache/thelounge ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/thelounge'
@@ -29,4 +32,11 @@ chown thelounge:root /var/log/thelounge.log
 chmod 770 /var/log/thelounge.log
 
 # service
-ln -fs $DIR/thelounge.service /lib/systemd/system/
+case $DISTRO in
+	'suse' )
+		ln -fs $DIR/thelounge.service /usr/lib/systemd/system/
+	;;
+	'debian' )
+		ln -fs $DIR/thelounge.service /lib/systemd/system/
+	;;
+esac

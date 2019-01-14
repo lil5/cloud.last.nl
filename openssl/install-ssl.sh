@@ -2,7 +2,8 @@
 
 echo '# openssl ##########'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 if ! [[ -d /opt/simplecloud/_config_cache/openssl ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/openssl'
@@ -58,7 +59,7 @@ cp /opt/simplecloud/_config_cache/openssl/root-ca.crt /var/www/dash/simplecloud.
 
 # permissions
 
-chown www-data:root -R /var/www/dash
+chown 1100:root -R /var/www/dash
 
 chown root:root -R /opt/simplecloud/_config_cache/openssl
 chmod 700 -R /opt/simplecloud/_config_cache/openssl

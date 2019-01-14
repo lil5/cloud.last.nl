@@ -7,7 +7,8 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 if [[ `uname` == "Linux" ]]; then
 	if [[ -f /etc/redhat-release ]]; then

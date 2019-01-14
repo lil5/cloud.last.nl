@@ -2,7 +2,10 @@
 
 echo '# Mini IRC #########'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
+
+DISTRO=`cat $DIR/../distro/.distro`
 
 if ! [[ -d /opt/simplecloud/_config_cache/miniircd ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/miniircd'
@@ -12,7 +15,7 @@ fi
 # install
 $DIR/../distro/pm-install.sh curl python3 openssl
 
-curl -o /usr/local/bin/miniircd https://raw.githubusercontent.com/jrosdahl/miniircd/master/miniircd
+curl -Lo /usr/local/bin/miniircd https://raw.githubusercontent.com/jrosdahl/miniircd/master/miniircd
 
 # configs
 
@@ -29,4 +32,11 @@ chmod 770 -R /opt/simplecloud/_config_cache/miniircd/
 chown miniircd:root -R /opt/simplecloud/_config_cache/miniircd/
 
 # service
-ln -fs $DIR/miniircd.service /lib/systemd/system/
+case $DISTRO in
+	'suse' )
+		ln -fs $DIR/miniircd.service /usr/lib/systemd/system/
+	;;
+	'debian' )
+		ln -fs $DIR/miniircd.service /lib/systemd/system/
+	;;
+esac

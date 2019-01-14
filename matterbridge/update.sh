@@ -24,5 +24,5 @@ if [[ -z $MATTERBRIDGE_DL_URL ]]; then
 	exit 1
 fi
 mv /usr/local/bin/matterbridge /tmp/matterbridge.old
-curl -o /usr/local/bin/matterbridge $MATTERBRIDGE_DL_URL
+curl -Lo /usr/local/bin/matterbridge $MATTERBRIDGE_DL_URL
 chmod +x /usr/local/bin/matterbridge

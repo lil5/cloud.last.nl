@@ -5,13 +5,14 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 case `cat $DIR/.distro` in
 	'suse' )
 		if [[ $@ == *"btrbk"* ]]; then
 			zypper install -y curl perl asciidoc mbuffer > /dev/null
-			curl -o /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
+			curl -Lo /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
 			chmod +x /usr/local/bin/btrbk
 		fi
 

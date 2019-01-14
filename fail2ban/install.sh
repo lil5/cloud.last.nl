@@ -2,7 +2,8 @@
 
 echo '# fail2ban #########'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 if ! [[ -d /opt/simplecloud/_config_cache/fail2ban ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/fail2ban'

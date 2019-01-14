@@ -14,7 +14,8 @@ default:
 	@grep '^[^#[:space:]].*:' Makefile | sed 's/#/ /'
 
 install: #                   Install SimpleCloud
-	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
+	@DIR="$(dirname "$(readlink -f "$0")")"; \
+	if [[ -z $$DIR ]]; then echo 'var DIR is empty'; exit 1; fi; \
 	chmod +x $$DIR/*/*.sh && \
 	$$DIR/distro/setup.sh; \
 	$$DIR/distro/pm-upgrade.sh && \
@@ -24,7 +25,8 @@ install: #                   Install SimpleCloud
 	ls $$DIR/*/install.sh | bash
 
 update: #                    Update system and SimpleCloud
-	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
+	@DIR="$(dirname "$(readlink -f "$0")")"; \
+	if [[ -z $$DIR ]]; then echo 'var DIR is empty'; exit 1; fi; \
 	echo 'update & upgrade' && \
 	$$DIR/distro/pm-upgrade.sh && \
 	echo 'update all...' && \
@@ -40,7 +42,8 @@ install-disk: #              Add disk to fstab
 	@nano /etc/fstab
 
 install-disk-tools: #        Add BTRFS tools for backups and snapshots
-	@DIR="$$( cd "$$( dirname "$${BASH_SOURCE[0]}" )" >/dev/null && pwd )"; \
+	@DIR="$(dirname "$(readlink -f "$0")")"; \
+	if [[ -z $$DIR ]]; then echo 'var DIR is empty'; exit 1; fi; \
 	$$DIR/distro/pm-upgrade.sh && \
 	$$DIR/distro/pm-install.sh nano btrfs-tools btrbk
 

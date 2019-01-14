@@ -2,7 +2,10 @@
 
 echo '# Matterbridge #####'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
+
+DISTRO=`cat $DIR/../distro/.distro`
 
 if ! [[ -d /opt/simplecloud/_config_cache/matterbridge ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/matterbridge'
@@ -17,7 +20,7 @@ case $(uname -m) in
 	i386|i686)
 		ARCH=386
 		;;
-	amd64)
+	amd64|x86_64)
 		ARCH=amd64
 		;;
 	arm*)
@@ -36,7 +39,7 @@ if [[ -z $MATTERBRIDGE_DL_URL ]]; then
 	echo 'Error: Matterbridge download not working!'
 	exit 1
 else
-	curl -o /usr/local/bin/matterbridge $MATTERBRIDGE_DL_URL
+	curl -Lo /usr/local/bin/matterbridge $MATTERBRIDGE_DL_URL
 fi
 
 # configs
@@ -53,4 +56,11 @@ chown matterbridge:root -R /opt/simplecloud/_config_cache/matterbridge
 chmod 770 -R /opt/simplecloud/_config_cache/matterbridge
 
 # service
-ln -fs $DIR/matterbridge.service /lib/systemd/system/
+case $DISTRO in
+	'suse' )
+		ln -fs $DIR/matterbridge.service /usr/lib/systemd/system/
+	;;
+	'debian' )
+		ln -fs $DIR/matterbridge.service /lib/systemd/system/
+	;;
+esac

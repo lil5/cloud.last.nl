@@ -2,7 +2,10 @@
 
 echo '# apache2 ##########'
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
+
+DISTRO=`cat $DIR/../distro/.distro`
 
 if ! [[ -d /opt/simplecloud/_config_cache/apache2 ]]; then
 	echo 'Directory not found: /opt/simplecloud/_config_cache/apache2'
@@ -34,6 +37,12 @@ systemctl disable apache2
 systemctl stop apache2
 
 # configs
+case $DISTRO in
+	'suse' )
+		mkdir /var/www
+	;;
+esac
+
 if ! [[ -f /opt/simplecloud/_config_cache/apache2/config.conf ]]; then
 	cp $DIR/config.default.conf /opt/simplecloud/_config_cache/apache2/config.conf
 fi
@@ -45,10 +54,26 @@ if ! [[ -f /opt/simplecloud/_config_cache/apache2/config.json ]]; then
 fi
 ln -sf /opt/simplecloud/_config_cache/apache2/config.json /var/www/dash/
 
-rm /etc/apache2/sites-enabled/*.conf
-
-ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/apache2/sites-enabled/
+case $DISTRO in
+	'suse' )
+		rm /etc/apache2/vhost.d/*.conf
+		ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/apache2/vhosts.d/
+	;;
+	'debian' )
+		rm /etc/apache2/sites-enabled/*.conf
+		ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/apache2/sites-enabled/
+	;;
+esac
 
 # permissions
-chown www-data:root -R /data/simplecloud/storage
-chown www-data:root -R /var/www/dash
+case $DISTRO in
+	'suse' )
+		usermod -u 1100 wwwrun
+	;;
+	'debian' )
+		usermod -u 1100 www-data
+	;;
+esac
+
+chown 1100:root -R /data/simplecloud/storage
+chown 1100:root -R /var/www/dash
