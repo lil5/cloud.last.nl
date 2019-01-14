@@ -19,6 +19,7 @@ fi
 # install
 $DIR/../distro/pm-install.sh apache2 unzip
 
+a2enmod access_compat
 a2enmod rewrite
 a2enmod dav
 a2enmod dav_fs
@@ -31,6 +32,8 @@ a2enmod proxy_connect
 a2enmod proxy_html
 a2enmod proxy_http
 a2enmod ssl
+a2enmod slotmem_shm
+a2enmod xml2enc
 
 systemctl disable apache2
 systemctl stop apache2
