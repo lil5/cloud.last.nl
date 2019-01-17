@@ -39,11 +39,9 @@ systemctl disable apache2
 systemctl stop apache2
 
 # configs
-case $DISTRO in
-	'suse' )
-		mkdir /var/www
-	;;
-esac
+if [[ ! -d /var/www ]]; then
+	mkdir /var/www
+fi
 
 if ! [[ -f /opt/simplecloud/_config_cache/apache2/config.conf ]]; then
 	cp $DIR/config.default.conf /opt/simplecloud/_config_cache/apache2/config.conf

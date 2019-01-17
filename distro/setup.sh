@@ -11,7 +11,9 @@ DIR="$(dirname "$(readlink -f "$0")")"
 if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 if [[ `uname` == "Linux" ]]; then
-	if [[ -f /etc/redhat-release ]]; then
+	if [[ -f /etc/centos-release ]]; then
+		DistroBasedOn="CentOS"
+	elif [[ -f /etc/redhat-release ]]; then
 		DistroBasedOn='RedHat'
 	elif [[ -f /etc/slackware-version ]]; then
 		DistroBasedOn='Slackware'

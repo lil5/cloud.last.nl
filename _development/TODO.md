@@ -8,6 +8,7 @@
   - [x] smallergallery
 
 - [ ] **#2 Ability to use other linux distros**
-  - [x] Debian
-  - [ ] OpenSUSE
-  - [ ] Fedora
+  - [ yes ] Debian
+  - [ yes ] OpenSUSE
+  - [ tbd ] Fedora
+  - [ tbd ] Ubuntu (should work along the Debian code)

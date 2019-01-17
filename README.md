@@ -1,4 +1,6 @@
-[![Debian](https://www.debian.org/logos/button-mini.png)](https://www.debian.org/distrib/) [![OpenSuse](https://en.opensuse.org/images/8/8c/Opensuse-black.png)](https://software.opensuse.org/distributions) [![irc](https://img.shields.io/badge/freenode-%23simplecloud-415364.svg?colorA=ff9e18&style=flat-square)](irc://chat.freenode.net:6697/#simplecloud)
+[![Debian](https://github.com/m4sk1n/logos/raw/master/32x32/debian.png)](https://www.debian.org/distrib/) [![Raspbian](https://github.com/m4sk1n/logos/raw/master/32x32/raspberry-pi.png)](https://www.raspberrypi.org/downloads/raspbian/) [![OpenSuse](https://github.com/m4sk1n/logos/raw/master/32x32/opensuse.png)](https://software.opensuse.org/distributions)
+
+[![irc](https://img.shields.io/badge/freenode-%23simplecloud-415364.svg?colorA=ff9e18&style=flat-square)](irc://chat.freenode.net:6697/#simplecloud) [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg?style=flat-square)](https://www.gnu.org/software/bash/)
 
 ```
  __ _                 _        ___ _                 _
