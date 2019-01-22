@@ -46,7 +46,7 @@ case `cat $DIR/.distro` in
 			chmod +x /usr/local/bin/btrbk
 		fi
 
-		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ btrfs-tools/ btrfs-progs/g; s/ btrbk//g; s/ apache2/ apache/g"
-		yes | pacman -Sq --needed $@
+		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ btrfs-tools/ btrfs-progs/g; s/ btrbk//g; s/ apache2/ apache/g"`
+		yes | pacman -Sq --needed $LIST_INSTALL_PKG
 	;;
 esac
