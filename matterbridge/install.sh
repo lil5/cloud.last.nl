@@ -60,7 +60,7 @@ case $DISTRO in
 	'suse' )
 		ln -fs $DIR/matterbridge.service /usr/lib/systemd/system/
 	;;
-	'debian' )
+	'debian'|'arch' )
 		ln -fs $DIR/matterbridge.service /lib/systemd/system/
 	;;
 esac

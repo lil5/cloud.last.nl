@@ -10,5 +10,7 @@
 - [ ] **#2 Ability to use other linux distros**
   - [ yes ] Debian
   - [ yes ] OpenSUSE
+  - [ yes ] Manjaro
+  - [ yes ] Arch (should work)
+  - [ tbd ] Ubuntu (should work by echo `debian' > /opt/simplecloud/distro/.distro`)
   - [ tbd ] Fedora
-  - [ tbd ] Ubuntu (should work along the Debian code)

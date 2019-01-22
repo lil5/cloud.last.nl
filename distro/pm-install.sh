@@ -34,4 +34,19 @@ case `cat $DIR/.distro` in
 
 		apt install -y $@
 	;;
+	'arch' )
+		if [[ $@ == *"apache2"* ]]; then
+			yes | pacman -Sq --needed trizen
+			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfim a2enmod-git
+		fi
+
+		if [[ $@ == *"btrbk"* ]]; then
+			yes | pacman -Sq --needed curl perl asciidoc
+			curl -Lo /usr/local/bin/btrbk https://raw.githubusercontent.com/digint/btrbk/master/btrbk
+			chmod +x /usr/local/bin/btrbk
+		fi
+
+		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ btrfs-tools/ btrfs-progs/g; s/ btrbk//g; s/ apache2/ apache/g"
+		yes | pacman -Sq --needed $@
+	;;
 esac

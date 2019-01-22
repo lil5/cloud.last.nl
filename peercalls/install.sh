@@ -29,7 +29,7 @@ case $DISTRO in
 	'suse' )
 		ln -fs $DIR/peercalls.service /usr/lib/systemd/system/
 	;;
-	'debian' )
+	'debian'|'arch' )
 		ln -fs $DIR/peercalls.service /lib/systemd/system/
 	;;
 esac

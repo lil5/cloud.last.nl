@@ -36,7 +36,7 @@ case $DISTRO in
 	'suse' )
 		ln -fs $DIR/miniircd.service /usr/lib/systemd/system/
 	;;
-	'debian' )
+	'debian'|'arch' )
 		ln -fs $DIR/miniircd.service /lib/systemd/system/
 	;;
 esac

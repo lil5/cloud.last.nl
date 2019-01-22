@@ -36,7 +36,7 @@ case $DISTRO in
 	'suse' )
 		ln -fs $DIR/thelounge.service /usr/lib/systemd/system/
 	;;
-	'debian' )
+	'debian'|'arch' )
 		ln -fs $DIR/thelounge.service /lib/systemd/system/
 	;;
 esac

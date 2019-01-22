@@ -19,4 +19,7 @@ case `cat $DIR/.distro` in
 	'debian' )
 		apt update -y && apt upgrade -y
 	;;
+	'arch' )
+		yes | pacman -Syu
+	;;
 esac

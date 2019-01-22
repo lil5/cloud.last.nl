@@ -46,7 +46,7 @@ case $DISTRO in
 	'suse' )
 		ln -fs $DIR/radicale.service /usr/lib/systemd/system/
 	;;
-	'debian' )
+	'debian'|'arch' )
 		ln -fs $DIR/radicale.service /lib/systemd/system/
 	;;
 esac

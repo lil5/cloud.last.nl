@@ -21,6 +21,8 @@ if [[ `uname` == "Linux" ]]; then
 		DistroBasedOn='SuSe'
 	elif [[ -f /etc/mandrake-release ]]; then
 		DistroBasedOn='Mandrake'
+	elif [[ -f /etc/manjaro-release ]]; then
+		DistroBasedOn='Manjaro'
 	elif [[ -f /etc/arch-release ]]; then
 		DistroBasedOn='Arch'
 	elif [[ -f /etc/debian_version ]]; then
@@ -40,6 +42,9 @@ case $DistroBasedOn in
 	;;
 	'Debian' )
 		printf 'debian' > $DIR/.distro
+	;;
+	'Manjaro'|'Arch' )
+		printf 'arch' > $DIR/.distro
 	;;
 	*)
 		echo 'Not supported yet'
