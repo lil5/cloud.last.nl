@@ -37,12 +37,12 @@ case `cat $DIR/.distro` in
 	'arch' )
 		if [[ $@ == *"apache2"* ]]; then
 			yes | pacman -Sq --needed trizen
-			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfim a2enmod-git
+			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfirm a2enmod-git
 		fi
 
 		if [[ $@ == *"btrbk"* ]]; then
 			yes | pacman -Sq --needed trizen
-			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfim btrbk
+			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfirm btrbk
 		fi
 
 		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/btrfs-tools/btrfs-progs/g; s/btrbk//g; s/apache2/apache/g; s/nodejs/nodejs npm/g; s/python3-pip/python-pip/g"`

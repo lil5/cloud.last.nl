@@ -21,7 +21,7 @@ case `cat $DIR/.distro` in
 	;;
 	'arch' )
 		if ! [[ -z `command -v trizen` ]]; then
-			sudo -u `ls /home | head -1` trizen -Syu --noedit --needed --noconfim
+			sudo -u `ls /home | head -1` trizen -Syu --noedit --needed --noconfirm
 		else
 			yes | pacman -Syu
 		fi
