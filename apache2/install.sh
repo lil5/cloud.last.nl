@@ -19,6 +19,14 @@ fi
 # install
 $DIR/../distro/pm-install.sh apache2 unzip
 
+case $DISTRO in
+	'arch' )
+		function a2enmod {
+			sed -ie "s/#LoadModule ${1}/LoadModule ${1}/g" /etc/httpd/conf/httpd.conf
+		}
+	;;
+esac
+
 a2enmod access_compat
 a2enmod rewrite
 a2enmod dav

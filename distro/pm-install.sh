@@ -35,11 +35,6 @@ case `cat $DIR/.distro` in
 		apt install -y $@
 	;;
 	'arch' )
-		if [[ $@ == *"apache2"* ]]; then
-			yes | pacman -Sq --needed trizen
-			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfirm a2enmod-git
-		fi
-
 		if [[ $@ == *"btrbk"* ]]; then
 			yes | pacman -Sq --needed trizen
 			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfirm btrbk
