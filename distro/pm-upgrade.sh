@@ -20,6 +20,10 @@ case `cat $DIR/.distro` in
 		apt update -y && apt upgrade -y
 	;;
 	'arch' )
-		yes | pacman -Syu
+		if ! [[ -z `command -v trizen` ]]; then
+			sudo -u `ls /home | head -1` trizen -Syu --noedit --needed --noconfim
+		else
+			yes | pacman -Syu
+		fi
 	;;
 esac
