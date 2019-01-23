@@ -53,5 +53,12 @@ pushd /opt/simplecloud/_config_cache/
 popd
 
 if $CRON_EDITS_DONE; then
-	systemctl restart cron
+	case `cat $DIR/../.distro` in
+		'suse'|'debian' )
+			systemctl restart cron
+		;;
+		'arch' )
+			systemctl restart cronie
+		;;
+	esac
 fi
