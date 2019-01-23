@@ -35,9 +35,12 @@ What is SimpleCloud trying to accomplish?
 
 ## Requirements
 
-- Debian or OpenSuse (ARM, x64, i386)
+- Debian, Arch, Manjaro or OpenSuse (ARM, x64, i386)
 - Harddrive mounted at `/data`
 - One open port (`443`)
+- `cron` installed and enabled (in Arch this is called `cronie`)
+- `make` `git` installed
+- Systemd
 
 ## Install
 

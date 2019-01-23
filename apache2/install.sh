@@ -63,6 +63,12 @@ case $DISTRO in
 		rm /etc/apache2/sites-enabled/*.conf
 		ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/apache2/sites-enabled/
 	;;
+	'arch' )
+		ln -sf /opt/simplecloud/_config_cache/apache2/config.conf /etc/httpd/conf/extra/enabled.conf
+		if [[ -z `grep 'Include conf/extra/enabled.conf' /etc/httpd/conf/httpd.conf` ]]; then
+			echo 'Include conf/extra/enabled.conf' >> /etc/httpd/conf/httpd.conf
+		fi
+	;;
 esac
 
 # permissions
@@ -74,6 +80,10 @@ case $DISTRO in
 	'debian' )
 		usermod -u 1100 www-data
 		groupmod -g 1300 www-data
+	;;
+	'arch' )
+		usermod -u 1100 http
+		groupmod -g 1300 http
 	;;
 esac
 

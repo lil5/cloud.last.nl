@@ -10,6 +10,9 @@ if [ "$EUID" -ne 0 ]; then
 	exit 1
 fi
 
+DIR="$(dirname "$(readlink -f "$0")")"
+if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
+
 CRON_EDITS_DONE=false
 
 if ! [[ -d /data/simplecloud ]]; then

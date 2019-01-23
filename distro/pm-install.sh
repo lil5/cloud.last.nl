@@ -17,7 +17,7 @@ case `cat $DIR/.distro` in
 			chmod +x /usr/local/bin/btrbk
 		fi
 
-		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ imagemagick/ ImageMagick/g; s/ btrfs-tools/ btrfsprogs/g; s/ btrbk//g; s/ nodejs/ nodejs8/g"`
+		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/imagemagick/ImageMagick/g; s/btrfs-tools/btrfsprogs/g; s/btrbk//g; s/nodejs/nodejs8/g"`
 		echo "zypper installing: $LIST_INSTALL_PKG"
 		zypper install -y $LIST_INSTALL_PKG > /dev/null
 	;;
@@ -45,7 +45,13 @@ case `cat $DIR/.distro` in
 			sudo -u `ls /home | head -1` trizen -Sa --noedit --needed --noconfim btrbk
 		fi
 
-		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/ btrfs-tools/ btrfs-progs/g; s/ btrbk//g; s/ apache2/ apache/g"`
+		LIST_INSTALL_PKG=`echo " $@" | sed -e "s/btrfs-tools/btrfs-progs/g; s/btrbk//g; s/apache2/apache/g; s/nodejs/nodejs npm/g; s/python3-pip/python-pip/g"`
 		yes | pacman -Sq --needed $LIST_INSTALL_PKG
+
+		if [[ $@ == *"apache2"* ]] && [[ ! -f /usr/lib/systemd/system/apache2.service ]]; then
+			cp -a /usr/lib/systemd/system/httpd.service /usr/lib/systemd/system/apache2.service
+			systemctl stop httpd
+			systemctl disable httpd
+		fi
 	;;
 esac
