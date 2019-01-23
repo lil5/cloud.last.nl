@@ -44,6 +44,7 @@ install-disk: #              Add disk to fstab
 install-disk-tools: #        Add BTRFS tools for backups and snapshots
 	@DIR=`pwd`; \
 	if [[ -z $$DIR ]]; then echo 'var DIR is empty'; exit 1; fi; \
+	$$DIR/distro/setup.sh && \
 	$$DIR/distro/pm-upgrade.sh && \
 	$$DIR/distro/pm-install.sh nano btrfs-tools btrbk
 
