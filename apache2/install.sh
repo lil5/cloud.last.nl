@@ -57,6 +57,7 @@ fi
 
 mkdir /var/www/dash
 unzip $DIR/simple-dash.zip -d /var/www/dash/
+chmod -R 775 /var/www/dash
 if ! [[ -f /opt/simplecloud/_config_cache/apache2/config.json ]]; then
 	cp $DIR/config.default.json /opt/simplecloud/_config_cache/apache2/config.json
 fi
