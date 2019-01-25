@@ -25,10 +25,10 @@ if ! [[ -f /etc/cron.d/simplecloud-config ]]; then
 	CRON_EDITS_DONE=true
 
 	# install dependencies
-	$DIR/../distro/pm-install.sh zip unzip
+	$DIR/../distro/pm-install.sh zip unzip printf
 
 	# add cron script
-	echo "SHELL=/bin/bash\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\nMAILTO=''\n\n00 06 * * * root /opt/simplecloud/configcache/run.sh" > /etc/cron.d/simplecloud-config
+	printf "SHELL=/bin/bash\\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\nMAILTO=''\\n\\n00 06 * * * root /opt/simplecloud/configcache/run.sh" > /etc/cron.d/simplecloud-config
 fi
 
 # if cron file not executable
