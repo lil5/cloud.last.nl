@@ -5,7 +5,7 @@ case $(uname -m) in
 	i386|i686)
 		ARCH=386
 		;;
-	amd64)
+	amd64|x86_64)
 		ARCH=amd64
 		;;
 	arm*)
