@@ -5,6 +5,7 @@ if [[ -z $DIR ]]; then echo 'var DIR is empty'; exit 1; fi
 
 $DIR/../distro/pm-install.sh ufw
 ufw allow https
+ufw allow http
 ufw allow ssh
 ufw --force enable
 
