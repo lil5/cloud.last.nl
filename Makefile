@@ -33,10 +33,10 @@ update: #                    Update system and SimpleCloud
 	ls $$DIR/*/update.sh | bash;
 
 start: #                     Start all apps
-	systemctl start apache2 thelounge radicale peercalls matterbridge miniircd
+	systemctl start apache2 thelounge radicale peercalls matterbridge miniircd crontabui
 
 stop: #                      Stop all apps
-	systemctl stop apache2 thelounge radicale peercalls matterbridge miniircd
+	systemctl  stop apache2 thelounge radicale peercalls matterbridge miniircd crontabui
 
 install-disk: #              Add disk to fstab
 	@nano /etc/fstab

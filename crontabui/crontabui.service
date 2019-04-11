@@ -1,0 +1,7 @@
+[Unit]
+Description=Crontab UI
+
+[Service]
+User=root
+Type=simple
+ExecStart=/opt/simplecloud/crontabui/run.sh
