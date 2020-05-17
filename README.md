@@ -15,6 +15,14 @@
     <li><strong>Only requires one open port</strong> <code>443</code></li>
 </ul>
 
+<h2>Requirements</h2>
+
+<ul>
+    <li>This git repository to be cloned in <code>/data/simplecloud</code></li>
+    <li>Directories <code>/data/storage</code> and <code>/data/radicale</code> exist</li>
+    <li>File <code>/data/passwd</code> exist and includes one or more passwords (preferably bcrypt)</li>
+</ul>
+
 <h2>References</h2>
 
 <ul>
