@@ -3,8 +3,8 @@
 <h2>Pages</h2>
 
 <ul>
-    <li><a href="/radicale/" alt="Radicale">📅 Radicale</a></li>
-    <li><a href="/webdav/" alt="WebDAV">📁 WebDAV</a></li>
+    <li><a href="/radicale/" alt="Radicale">&#x1F4C5; Radicale</a></li>
+    <li><a href="/webdav/" alt="WebDAV">&#x1F4C1; WebDAV</a></li>
 </ul>
 
 <h2>What is SimpleCloud trying to accomplish?</h2>
