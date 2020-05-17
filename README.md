@@ -11,8 +11,7 @@
 
 <ul>
     <li><strong>Designed to be simple to install, simple to configure, simple to backup, simple to use.</strong></li>
-    <li><strong>Without a database!</strong></li>
-    <li><strong>All required configs and files must reside under one directory.</strong> <code>/data/</code></li>
+    <li><strong>All required configs and files must reside under one directory.</strong> <code>/data/simplecloud</code></li>
     <li><strong>Only requires one open port</strong> <code>443</code></li>
 </ul>
 
