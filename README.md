@@ -4,7 +4,7 @@
 
 <ul>
     <li><a href="/radicale/" alt="Radicale">&#x1F4C5; Radicale</a></li>
-    <li><a href="smb://192.168.179.181/" alt="Samba">&#x1F4C1; Samba</a></li>
+    <li><a href="smb://192.168.179.181/storage/" alt="Samba">&#x1F4C1; Samba</a></li>
     <!-- <li><a href="/webdav/" alt="WebDAV">&#x1F4C1; WebDAV</a></li> -->
 </ul>
 
