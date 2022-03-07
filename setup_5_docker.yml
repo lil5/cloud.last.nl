@@ -1,0 +1,19 @@
+- hosts: nl_last_cloud
+  become: true
+  tasks:
+    - name: Check if docker is installed
+      command: which docker
+      register: is_docker_installed
+      ignore_errors: true
+    - name: Install docker
+      when: is_docker_installed == ""
+      shell: |
+        curl -fsSL https://get.docker.com -o /tmp/get-docker.sh
+        sh /tmp/get-docker.sh
+        usermod -aG docker pi
+        rm /tmp/get-docker.sh
+    - name: Enable & Start docker service
+      service:
+        name: docker
+        state: started
+        enabled: true

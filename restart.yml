@@ -1,0 +1,5 @@
+- hosts: nl_last_cloud
+  become: true
+  tasks:
+    - name: Restart
+      reboot:

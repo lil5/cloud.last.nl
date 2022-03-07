@@ -1,0 +1,15 @@
+- hosts: nl_last_cloud
+  become: true
+  tasks:
+    - name: Upgrade packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+    - name: Update docker
+      become_user: pi
+      shell: |
+        cd /data
+        docker-compose pull
+        if [ -f docker-lock.json ]; then
+          cp docker-lock.json docker-lock.$(date +'%s').json
+        fi

@@ -1,0 +1,8 @@
+- hosts: nl_last_cloud
+  become: true
+  tasks:
+    - name: Docker compose up
+      become_user: pi
+      shell: |
+        cd /data
+        docker-compose up -d
