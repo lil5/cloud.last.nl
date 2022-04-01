@@ -1,0 +1,20 @@
+- hosts: nl_last_cloud
+  become: true
+  tasks:
+    - name: Get previous scrub status
+      shell: |
+        btrfs scrub status /data/
+      register: result
+    - name: Print scrub status
+      debug:
+        msg: "{{ result }}"
+    - name: Assert that the scrub has finished without errors
+      assert:
+        that:
+          - "'Status:           finished' in result.stdout_lines"
+          - "'Error summary:    no errors found' in result.stdout_lines"
+        success_msg: "Previous scrub has finished without errors"
+        fail_msg: "Either a scrub is already running or an error has occurred during the previous scrub"
+    - name: Run new scrub
+      shell: |
+        btrfs scrub start /data/
