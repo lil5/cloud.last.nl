@@ -1,5 +1,7 @@
 - hosts: nl_last_cloud
   become: true
+  vars_files:
+    - vars/private.yml
   tasks:
     - name: Set mount point permissions
       shell: |
@@ -11,7 +13,7 @@
     - name: Mount disk to data
       mount:
         path: /data
-        src: UUID=ba22616c-5849-41b6-acad-f7d767ba5253
+        src: UUID={{ disk_uuid }}
         fstype: btrfs
         opts: defaults,noatime
         state: present
