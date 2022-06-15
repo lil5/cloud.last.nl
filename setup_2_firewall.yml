@@ -13,7 +13,7 @@
         ufw allow 21027
         ufw --force enable
     - name: Enable service
-      service: 
+      service:
         name: ufw
         state: started
         enabled: true

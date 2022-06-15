@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-playbook.json": "file:///home/snow/Projects/cloud.last.nl/ansible/test.yml"
-    }
-}

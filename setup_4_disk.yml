@@ -7,7 +7,7 @@
       shell: |
         mkdir /data
         chown 1000:1000 /data
-        chmod 0775 /data  
+        chmod 0775 /data
     # Find UUID of Storage Devices
     # sudo blkid
     - name: Mount disk to data
